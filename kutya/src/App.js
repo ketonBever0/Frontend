@@ -6,9 +6,9 @@ import './App.css';
 import Main from './comp/Main';
 import NavBar from './comp/NavBar'
 
-import RendelesiAdatok from './comp/RendelesiAdatok'
-import Kutyafajtak from './comp/Kutyafajtak';
-import Kutyanevek from './comp/Kutyanevek';
+import RendelesiAdatok from './comp/RendelesiAdatok';
+import Kutyafajtak from './comp/Kutyafajtak/Kutyafajtak';
+import Kutyanevek from './comp/Kutyanevek/Kutyanevek';
 import Nevjegy from './comp/Nevjegy';
 
 
