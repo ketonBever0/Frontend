@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Routes,Route,Navigate} from 'react-router-dom';
 
 import './App.css';
 
@@ -23,6 +23,7 @@ function App() {
           <Route path="/kutyanevek" element={<Kutyanevek/>}/>
           <Route path="/kutyafajtak" element={<Kutyafajtak/>}/>
           <Route path="/nevjegy" element={<Nevjegy/>}/>
+          <Route path="*" element={<Navigate to='/'/>}/>
         </Routes>
       </Router>
     </div>
