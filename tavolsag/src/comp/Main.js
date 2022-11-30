@@ -45,7 +45,7 @@ function Main() {
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
-                        {distance.stops[0].city} és {distance.stops[1].city}
+                        {distance.stops[0].city} és {distance.stops[1].city} távolsága
                     </h2>
                     <p>{distance.distance}</p>
                     <div className="card-actions justify-end">
