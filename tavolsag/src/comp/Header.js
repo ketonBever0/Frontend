@@ -2,9 +2,7 @@
 
 function Header() {
   return (
-    <div>
-      
-    </div>
+    <div><h1>Települések távolsága</h1></div>
   )
 }
 
