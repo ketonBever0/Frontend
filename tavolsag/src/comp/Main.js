@@ -8,32 +8,26 @@ function Main() {
     const [refresh, setRefresh] = useState(false)
 
 
-    const update = () => {
-        setRefresh(prev => !prev)
-    }
 
 
 
 
     useEffect(() => {
+
         //fetch('https://www.distance24.org/route.json?stops=Sopron|Szeged').catch(err=>console.log(err));
-        fetch('http://localhost:8000/distance')
-            .then(res => res.json())
-            .then(data => setDistance(data))
-            .catch(err => console.log(err));
-    }, [refresh]);
-
-
-
+        const fetchData = async () => {
+            await fetch('http://localhost:8000/distance')
+                .then(res => res.json())
+                .then(data => setDistance(data));
+            //.catch(err => console.log(err));
+        }
+        fetchData().catch(err => console.log(err));
+    }, []);
 
 
 
 
     // {distance.stops[0].city} {distance.stops[1].city}
-
-
-
-
 
 
 
@@ -45,7 +39,11 @@ function Main() {
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
-                        {distance.stops[0].city} és {distance.stops[1].city}
+                        {/* {distance.stops.map(s=><li key={s.city}>{s.city}</li>)} */}
+                        {/* {distance.stops[0].city} és {distance.stops[1].city} */}
+
+
+                        {distance.first_stop} és {distance.last_stop}
                     </h2>
                     <p>{distance.distance}</p>
                     <div className="card-actions justify-end">
