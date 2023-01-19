@@ -6,23 +6,38 @@ function ByIngredientName() {
 
     const [Coctails, setCoctails] = useState([]);
     const [FormData, setFormData] = useState('');
-    const [SearchValue, setSearchValue] = useState(FormData);
+    const [Refresh, setRefresh] = useState(false);
 
-    const Search = async (e) => {
+
+    const update = () => {
+        setRefresh((prev) => !prev);
+    }
+
+
+
+    const Search = (e) => {
+
 
         e.preventDefault();
-        setSearchValue(FormData);
+        // console.log(Coctails);
 
 
-        await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${FormData}`)
+    }
+
+
+    useEffect(() => {
+
+
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${FormData}`)
             .then(res => res.json())
-            .then(data => setCoctails(data))
+            .then(data => setCoctails(data.ingredients))
             .catch(err => console.log(err));
 
 
-        console.log(Coctails);
+    })
 
-    }
+    // console.log(Coctails);
+
 
     return (
         <div>
@@ -33,12 +48,14 @@ function ByIngredientName() {
             </form>
 
 
-            {/* {
-                Coctails ?
+            {
+                Coctails !== [] ?
                     Coctails.map((ingredients, index) => (<ByIngredientNameResults key={index} ingredients={ingredients} />))
                     :
                     <div></div>
-            } */}
+
+
+            }
 
         </div>
     )

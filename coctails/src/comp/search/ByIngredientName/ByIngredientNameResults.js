@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 
 function ByIngredientNameResults(ingredients) {
 
-
+    // console.log(ingredients);
 
     return (
-        <div>{ingredients.ingredient.strIngredient}</div>
+        <div>{ingredients.ingredients.strIngredient}</div>
+
+
+
+
     )
 }
 
