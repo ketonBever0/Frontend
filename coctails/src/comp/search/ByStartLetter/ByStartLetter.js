@@ -3,14 +3,35 @@ import React from 'react'
 function ByStartLetter() {
 
 
-  
+  const [SelectedLetter, setSelectedLetter] = useState('A')
+
+
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${SelectedLetter}`)
+    .then(res => res.json())
+    .then(data => setCoctails(data))
+    .catch(err => console.log(err));
+
+
+
+  const engABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+
+
+
   return (
     <div>
       <div className="text-2xl mb-8">Kezdőbetű szerint</div>
-      <form action="">
-        <input type="text" placeholder="Koktél kezdőbetűje neve" className="input input-bordered input-primary w-full max-w-xs mb-20" />
-        <button className="btn btn-secondary ml-5" type="submit">Button</button>
-      </form>
+
+      <select name="letters">
+
+        
+
+      </select>
+
+
+
+
+
     </div>
   )
 }
