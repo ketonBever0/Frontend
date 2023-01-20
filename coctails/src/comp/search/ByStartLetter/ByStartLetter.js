@@ -3,13 +3,13 @@ import React from 'react'
 function ByStartLetter() {
 
 
-  const [SelectedLetter, setSelectedLetter] = useState('A')
+  // const [SelectedLetter, setSelectedLetter] = useState('A')
 
 
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${SelectedLetter}`)
-    .then(res => res.json())
-    .then(data => setCoctails(data))
-    .catch(err => console.log(err));
+  // fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${SelectedLetter}`)
+  //   .then(res => res.json())
+  //   .then(data => setCoctails(data))
+  //   .catch(err => console.log(err));
 
 
 
@@ -23,6 +23,7 @@ function ByStartLetter() {
       <div className="text-2xl mb-8">Kezdőbetű szerint</div>
 
       <select name="letters">
+
 
         
 
