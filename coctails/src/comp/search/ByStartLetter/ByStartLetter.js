@@ -9,10 +9,10 @@ function ByStartLetter() {
 
 
 
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${SelectedLetter}`)
-    .then(res => res.json())
-    .then(data => setCoctails(data))
-    .catch(err => console.log(err));
+  // fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${SelectedLetter}`)
+  //   .then(res => res.json())
+  //   .then(data => setCoctails(data))
+  //   .catch(err => console.log(err));
 
 
 

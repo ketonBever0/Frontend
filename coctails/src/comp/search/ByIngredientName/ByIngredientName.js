@@ -5,7 +5,9 @@ import ByIngredientNameResults from './ByIngredientNameResults';
 function ByIngredientName() {
 
     const [Coctails, setCoctails] = useState([]);
+    const [CoctailsResults, setCoctailsResults] = useState([]);
     const [FormData, setFormData] = useState('');
+    const [SearchValue, setSearchValue] = useState('');
     const [Refresh, setRefresh] = useState(false);
     const [SearchValue, setSearchValue] = useState('');
     const [SearchResults, setSearchResults] = useState({});
@@ -22,6 +24,8 @@ function ByIngredientName() {
 
         e.preventDefault();
         // console.log(Coctails);
+        setSearchValue(FormData);
+
 
 
     }
@@ -36,7 +40,7 @@ function ByIngredientName() {
             .catch(err => console.log(err));
 
 
-    })
+    }, [SearchValue])
 
     // console.log(Coctails);
 
