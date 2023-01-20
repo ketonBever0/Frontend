@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+
 
 function ByStartLetter() {
 
 
   const [SelectedLetter, setSelectedLetter] = useState('A')
+  const [Coctails, setCoctails] = useState({});
+
 
 
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${SelectedLetter}`)
@@ -24,7 +27,7 @@ function ByStartLetter() {
 
       <select name="letters">
 
-        
+
 
       </select>
 
