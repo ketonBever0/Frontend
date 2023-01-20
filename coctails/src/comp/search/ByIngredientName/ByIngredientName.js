@@ -7,7 +7,6 @@ function ByIngredientName() {
     const [Coctails, setCoctails] = useState([]);
     const [CoctailsResults, setCoctailsResults] = useState([]);
     const [FormData, setFormData] = useState('');
-    const [SearchValue, setSearchValue] = useState('');
     const [Refresh, setRefresh] = useState(false);
     const [SearchValue, setSearchValue] = useState('');
     const [SearchResults, setSearchResults] = useState({});
