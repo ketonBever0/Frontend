@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
-function ByIngredientNameResults(ingredients) {
+function ByIngredientNameResults({ coctails }) {
 
     // console.log(ingredients);
 
-    return (
-        <div>{ingredients.ingredients.strIngredient}</div>
+    try {
+        return (
 
 
-
-
-    )
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <figure><img src={coctails.strDrinkThumb} alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        {coctails.strDrink}
+                        {/* <div className="badge badge-secondary">NEW</div> */}
+                    </h2>
+                    <p></p>
+                    {/* <div className="card-actions justify-end">
+                        <div className="badge badge-outline">Fashion</div>
+                        <div className="badge badge-outline">Products</div>
+                    </div> */}
+                </div>
+            </div>
+        )
+    }
+    catch (e) {
+        return (
+            <div>Valami hiba történt!</div>
+        )
+    }
 }
 
 
