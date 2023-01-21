@@ -16,8 +16,7 @@ function ByStartLetter() {
 
 
 
-  const engABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+  const engABC = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 
 
@@ -26,9 +25,7 @@ function ByStartLetter() {
       <div className="text-2xl mb-8">Kezdőbetű szerint</div>
 
       <select name="letters">
-
-
-
+        {engABC.map((letter, index) => (<option key={index} value={letter}>{letter}</option>))}
       </select>
 
 

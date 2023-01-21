@@ -5,11 +5,8 @@ import ByIngredientNameResults from './ByIngredientNameResults';
 function ByIngredientName() {
 
     const [Coctails, setCoctails] = useState([]);
-    const [CoctailsResults, setCoctailsResults] = useState([]);
     const [FormData, setFormData] = useState('');
-    const [Refresh, setRefresh] = useState(false);
     const [SearchValue, setSearchValue] = useState('');
-    const [SearchResults, setSearchResults] = useState({});
 
 
     // const update = () => {
@@ -26,15 +23,6 @@ function ByIngredientName() {
 
     }
 
-    // useEffect(() => {
-
-    //     if (SearchValue !== '') {
-    //         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${SearchValue}`)
-    //             .then(res => res.json())
-    //             .then(data => setCoctails(data.ingredients))
-    //             .catch(err => console.log(err));
-    //     }
-    // }, [SearchValue])
 
     useEffect(() => {
 
@@ -49,12 +37,12 @@ function ByIngredientName() {
     const Listing = () => {
         try {
             return (
-                <div className='justify-center items-center grid-flow-col grid auto-cols-min'>
+                <div className='justify-center items-center grid lg:grid-cols-4 md:grid-cols-1 gap-8'>
                     {Coctails.map((coctails, index) => (<ByIngredientNameResults key={index} coctails={coctails} />))}
                 </div>
             )
         }
-        catch (e) {
+        catch {
             return (<div>Nincs ilyen hozzávaló.</div>)
         }
     }
