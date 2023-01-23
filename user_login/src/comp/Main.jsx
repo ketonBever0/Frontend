@@ -2,7 +2,7 @@
 
 function Main() {
   return (
-    <div>Main</div>
+    <div className="text-4xl text-center mt-5 font-bold">Main</div>
   )
 }
 
