@@ -4,7 +4,7 @@ import ByIngredientNameResults from './ByIngredientNameResults';
 
 function ByIngredientName() {
 
-    const [Coctails, setCoctails] = useState([]);
+    const [Coctails, setCoctails] = useState({});
     const [FormData, setFormData] = useState('');
     const [SearchValue, setSearchValue] = useState('');
 
