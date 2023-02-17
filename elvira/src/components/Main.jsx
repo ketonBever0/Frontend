@@ -31,7 +31,7 @@ function Main() {
                             <span className="label-text">From:</span>
                             {/* <span className="label-text-alt">Alt label</span> */}
                         </label>
-                        <input type="text" name="from" value={formData.from} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" name="from" value={formData.from} defaultValue="" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
                         <label className="label">
                             {/* <span className="label-text-alt">Alt label</span> */}
                             {/* <span className="label-text-alt">Alt label</span> */}
