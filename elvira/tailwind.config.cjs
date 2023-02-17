@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",],
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
       rotate: {
@@ -9,5 +10,7 @@ module.exports = {
       }
     },
   },
-  plugins: [require("daisyui")],
+  plugins:
+    [require("daisyui"),
+    require('flowbite/plugin')],
 }
