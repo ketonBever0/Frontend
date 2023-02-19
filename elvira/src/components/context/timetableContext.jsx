@@ -35,9 +35,9 @@ export const TimetableProvider = ({ children }) => {
                 .catch(err => { Notify.tError("Something went wrong!"); console.log(err); });
             setIsLoading(false);
         } else if (form.from == "" || form.to == "") {
-            Notify.tError("Missing required stations!");
+            return Notify.tError("Missing required stations!");
         } else if (form.from == form.to) {
-            Notify.tError("From and To station must be different!");
+            return Notify.tError("From and To station must be different!");
         }
 
     }
