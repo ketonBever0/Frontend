@@ -50,12 +50,12 @@ function Timetable({ table }) {
                 style={modalStyle}
                 ariaHideApp={false}
             >
-                <h3 className="text-3xl mb-6">Total time: {table.totaltime}</h3>
-                <h3 className="text-3xl mb-6">Stops:</h3>
+                <h3 className="text-3xl mb-6 text-primary-content">Total time: {table.totaltime}</h3>
+                <h3 className="text-3xl mb-6 text-primary-content">Stops:</h3>
                 {table.details.map((detail, index) => (
                     <ol key={index} className="list-none">
-                        {detail.platform != "" && <p className='text-center my-2'>TRANSFER</p>}
-                        <li>{index + 1}. {detail.dep} - {detail.from}</li>
+                        {detail.platform != "" && <p className='text-center my-2 text-primary-content'>TRANSFER</p>}
+                        <li className='text-primary-content'>{index + 1}. {detail.dep} - {detail.from}</li>
                     </ol>
                 ))}
                 <button className='btn mt-6 mx-auto' onClick={closeModal}>Close</button>
