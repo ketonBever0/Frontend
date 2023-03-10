@@ -9,9 +9,9 @@ module.exports = {
           '100%': { transform: 'rotate(180deg)' },
         },
 
-        openDrawer: {
+        hiddenToVisible: {
           '0%': { opactiy: '0' },
-          '100%': { opacity: '1' },
+          '100%': { opacity: '0.3' },
         }
 
       },
@@ -19,7 +19,9 @@ module.exports = {
       animation: {
         'rotate-arrow': 'rotateArrow',
 
-        'open-drawer': 'openDrawer'
+        'open-drawer': 'hiddenToVisible',
+
+        'display-mobile-submenu': 'hiddenToVisible',
 
       }
 
