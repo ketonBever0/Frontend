@@ -1,0 +1,33 @@
+<h3 class="text-xl text-center">Felhasználók</h3>
+
+<div class="container">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-5">
+
+        <ng-container *ngIf="users.length>0; else ureslista">
+            <ng-container *ngFor="let user of users">
+
+                <div class="card w-96 bg-base-100 shadow-xl my-5 mx-auto">
+                    <figure><img src={{user.picture.large}} /></figure>
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            {{user.name.title}} {{user.name.first}} {{user.name.last}} ({{user.dob.age}})
+                            <!-- <div class="badge badge-secondary">NEW</div> -->
+                        </h2>
+                        <p></p>
+                        <!-- <div class="card-actions justify-end">
+                    <div class="badge badge-outline">Fashion</div>
+                    <div class="badge badge-outline">Products</div>
+                </div> -->
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+
+    </div>
+
+    <ng-template #ureslista>
+        <h3 class="text-xl text-center">A lista üres!</h3>
+    </ng-template>
+
+</div>
