@@ -93,31 +93,35 @@ function NavBar() {
                 </div>
             </header>
 
-            <div onClick={() => { setIsDrawerOpen(false); }} className={`min-h-screen min-w-full mt-10 bg-black/50 fixed top-5 left-0 md:hidden animate-open-drawer opacity-100 ${!isDrawerOpen && 'hidden'}`}>
-                <div onClick={(e) => e.stopPropagation()} id='drawer' className={`min-h-screen fixed right-0 menu bg-base-100 w-56 md:hidden ${!isDrawerOpen && 'hidden'}`}>
-                    <ul className={`mt-5`}>
-                        <li><Link to='/'>Main</Link></li>
-                        <li><Link to='/about'>About</Link></li>
-                        <li>
-                            <button onClick={() => setIsDrawerDropdownMenuOpen(prev => !prev)}>
-                                Parent
-                                {/* {isDrawerDropdownMenuOpen ? <FaAngleUp /> : <FaAngleDown />} */}
-                                <FaAngleUp className={`transition ${isDrawerDropdownMenuOpen && 'rotate-180'}`} />
-                                {/* <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg> */}
-                            </button>
-                            <ul className={`transition p-2 mx-2 rounded bg-secondary
+            <div onClick={() => { setIsDrawerOpen(false); }} className={`min-h-screen min-w-full mt-10 bg-black/50 fixed top-6 left-0 opacity-100 md:hidden ${!isDrawerOpen && 'opacity-0 hidden'}`}></div>
+            <div onClick={(e) => e.stopPropagation()} className={`min-h-screen fixed right-0 menu bg-base-100 md:hidden
+            ${!isDrawerOpen ?
+                    'w-0 animate-close-drawer'
+                    :
+                    'w-56 animate-open-drawer'}`}>
+                <ul className={`mt-5`}>
+                    <li><Link to='/'>Main</Link></li>
+                    <li><Link to='/about'>About</Link></li>
+                    <li>
+                        <button onClick={() => setIsDrawerDropdownMenuOpen(prev => !prev)}>
+                            Parent
+                            {/* {isDrawerDropdownMenuOpen ? <FaAngleUp /> : <FaAngleDown />} */}
+                            <FaAngleUp className={`transition ${isDrawerDropdownMenuOpen && 'rotate-180'}`} />
+                            {/* <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg> */}
+                        </button>
+                        <ul className={`p-2 mx-2 rounded
                             ${isDrawerDropdownMenuOpen ?
-                                    'h-auto visible'
-                                    :
-                                    'h-0 hidden'}`}>
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li className='transition'><Link to=''>Asd</Link></li>
-                    </ul>
-                </div>
+                                'visible'
+                                :
+                                'hidden'}`}>
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </li>
+                    <li className='transition'><Link to=''>Asd</Link></li>
+                </ul>
             </div>
+
 
 
 
