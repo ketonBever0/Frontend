@@ -36,7 +36,7 @@ function NavBar() {
                         </div>
                         <div className="hidden md:block">
                             <nav aria-label="Site Nav">
-                                <ul className="flex items-center gap-6 text-sm">
+                                <ul className="flex items-center gap-6 text-sm menu menu-horizontal">
                                     <li>
                                         <Link to='/about' className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75" href="/">
                                             About
@@ -47,15 +47,15 @@ function NavBar() {
                                             Careers
                                         </a>
                                     </li>
-                                    <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75" href="/">
-                                            History
+                                    <li tabIndex={0} className='transition hover:rotate-180'>
+                                        <a>
+                                            Parent
+                                            <FaAngleDown />
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75" href="/">
-                                            Services
-                                        </a>
+                                        <ul className='bg-white'>
+                                            <li><a>Submenu 1</a></li>
+                                            <li><a>Submenu 2</a></li>
+                                        </ul>
                                     </li>
                                     <li>
                                         <a className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75" href="/">
@@ -93,7 +93,7 @@ function NavBar() {
                 </div>
             </header>
 
-            <div onClick={() => { setIsDrawerOpen(false); }} className={`min-h-screen min-w-full mt-10 bg-black/50 fixed top-6 left-0 opacity-100 md:hidden ${!isDrawerOpen && 'opacity-0 hidden'}`}></div>
+            <div onClick={() => { setIsDrawerOpen(false); }} className={`min-h-screen min-w-full mt-10 bg-black/50 fixed top-6 left-0 md:hidden ${!isDrawerOpen && 'hidden'}`} />
             <div onClick={(e) => e.stopPropagation()} className={`min-h-screen fixed right-0 menu bg-base-100 md:hidden
             ${!isDrawerOpen ?
                     'w-0 animate-close-drawer'
@@ -107,7 +107,6 @@ function NavBar() {
                             Parent
                             {/* {isDrawerDropdownMenuOpen ? <FaAngleUp /> : <FaAngleDown />} */}
                             <FaAngleUp className={`transition ${isDrawerDropdownMenuOpen && 'rotate-180'}`} />
-                            {/* <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg> */}
                         </button>
                         <ul className={`p-2 mx-2 rounded
                             ${isDrawerDropdownMenuOpen ?
