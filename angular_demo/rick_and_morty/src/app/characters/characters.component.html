@@ -1,0 +1,32 @@
+<div class="min-h-screen bg-blue-300">
+    <h2 class="text-2xl font-bold bg-blue-800 text-blue-50 p-5 mb-4 text-center">Szereplők</h2>
+
+
+    <ng-container *ngIf="isLoading;else characterlist">
+        <h3 class="text-xs text-center">Betöltés...</h3>
+    </ng-container>
+
+    <ng-template #characterlist>
+        <ng-container *ngIf="results.length>0; else ureslista">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mx-auto my-4">
+                <ng-container *ngFor="let i of results">
+                    <!-- <p class="text-xl text-center">{{i.name}}</p> -->
+
+                    <app-characterinfo [character]=i />
+
+
+                </ng-container>
+            </div>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #ureslista>
+        <h3 class="text-xs">A lista üres</h3>
+    </ng-template>
+
+
+    <div class="btn-group grid grid-cols-2 bottom-0 w-1/2 mt-5 fixed inset-x-1/4">
+        <button class="btn btn-outline" (click)="prevPage()">Előző</button>
+        <button class="btn btn-outline" (click)="nextPage()">Következő</button>
+    </div>
+</div>
