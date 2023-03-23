@@ -5,6 +5,8 @@ import './App.css'
 import { ArticleProvider } from './context/ArticleContext'
 import ArticleContainer from './components/ArticleContainer'
 import Header from './components/Header'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import ArticlePage from './components/ArticlePage'
 
 function App() {
 
@@ -14,7 +16,13 @@ function App() {
       <ArticleProvider>
 
         <Header />
-        <ArticleContainer />
+        <Router>
+          <Routes>
+            <Route path='/' element={<ArticleContainer />} />
+            <Route path='/article/:slug' element={<ArticlePage />} />
+          </Routes>
+        </Router>
+
 
 
       </ArticleProvider>

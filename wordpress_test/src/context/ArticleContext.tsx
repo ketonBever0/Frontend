@@ -13,7 +13,7 @@ export const ArticleProvider = ({ children }: any) => {
 
         // if (!articles) {
         setIsLoading(true);
-        fetch('http://localhost/wordpress/wp-json/wp/v2/pages')
+        fetch('http://localhost/wordpress/wp-json/wp/v2/posts')
             .then(res => res.json())
             .then(data => {
                 if (data && !data.message) {
@@ -24,7 +24,7 @@ export const ArticleProvider = ({ children }: any) => {
         setIsLoading(false);
         // }
 
-    }, [])
+    }, )
 
 
     return <ArticleContext.Provider value={{

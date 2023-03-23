@@ -12,10 +12,10 @@ function ArticleContainer() {
     return (
         <div>
             {
-                !isLoading && articles?.map((article: Object, index: Number) => (
-
-                    <Article article={article} key={index} />
-
+                !isLoading && articles?.map((article: Object, index: any) => (
+                    <div key={index} style={{ border: "2px solid black" }}>
+                        <Article article={article} />
+                    </div>
                 ))
             }
 
