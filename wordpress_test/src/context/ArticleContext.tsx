@@ -24,7 +24,9 @@ export const ArticleProvider = ({ children }: any) => {
         setIsLoading(false);
         // }
 
-    }, )
+    }, [])
+
+
 
 
     return <ArticleContext.Provider value={{

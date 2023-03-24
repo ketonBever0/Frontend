@@ -47,7 +47,7 @@ function NavBar() {
                                             Careers
                                         </a>
                                     </li>
-                                    <li tabIndex={0} className='transition hover:rotate-180'>
+                                    <li tabIndex={0}>
                                         <a>
                                             Parent
                                             <FaAngleDown />
