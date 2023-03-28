@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import hsLogo from '../assets/hs_logo.png';
+import hsLogo from 'src/assets/hs_logo.png';
 
 function NavBar() {
 
@@ -17,7 +17,7 @@ function NavBar() {
 
     return (
         <div>
-            <header aria-label="Site Header" className="bg-white dark:bg-gray-900">
+            <header aria-label="Site Header" className="bg-neutral dark:bg-gray-900">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
 

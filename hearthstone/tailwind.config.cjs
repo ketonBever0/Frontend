@@ -1,6 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  daisyui: {
+    themes: [
+      {
+        hsTheme: {
+          primary: "#693D2D",
+          secondary: "#C3A492",
+          accent: "#31261D",
+          neutral: "#CE975C",
+          "base-100": "#ffffff",
+        },
+      }
+    ],
+  },
   theme: {
     extend: {
       keyframes: {

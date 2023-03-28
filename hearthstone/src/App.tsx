@@ -8,7 +8,7 @@ import { CardProvider } from './context/CardContext'
 function App() {
 
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen' data-theme="hsTheme">
 
       <CardProvider>
 

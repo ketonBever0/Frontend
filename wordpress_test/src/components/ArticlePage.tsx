@@ -7,7 +7,11 @@ function ArticlePage() {
     const [page, setPage] = useState<any | object | null>(null);
 
     useEffect(() => {
-        fetch(`http://localhost/wordpress/wp-json/wp/v2/posts?slug=${slug}`)
+        fetch(`http://localhost/wordpress/wp-json/wp/v2/posts?slug=${slug}`, {
+            headers: {
+                Authorization: 'Basic bGFjaToxMjNRV0Vhc2Q='
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data && !data.message) {

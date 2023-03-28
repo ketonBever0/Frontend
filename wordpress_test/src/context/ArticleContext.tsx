@@ -13,15 +13,20 @@ export const ArticleProvider = ({ children }: any) => {
 
         // if (!articles) {
         setIsLoading(true);
-        fetch('http://localhost/wordpress/wp-json/wp/v2/posts')
+        fetch('http://10.0.28.5/wordpress/wp-json/wp/v2/posts', {
+            headers: {
+                // 'Content-type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJMYWNpIiwiaWF0IjoxNjc5OTk1NDk3LCJleHAiOjE4Mzc2NzU0OTd9.8sopUixxUKgPTh8KRmQfL8yOGlnm-5Dzu6NvB4Ld2M4'
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data && !data.message) {
                     setArticles(data);
                 }
             })
-            .catch(err => console.log(err));
-        setIsLoading(false);
+            .catch(err => console.log(err))
+            .finally(() => setIsLoading(false));
         // }
 
     }, [])
