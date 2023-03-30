@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import hsLogo from 'src/assets/hs_logo.png';
+import hsLogo from '../assets/hs_logo.png';
 
 function NavBar() {
 
     const { pathname } = useLocation();
 
-    const [isFirstLoaded, setIsFirstLoaded] = useState<boolean>(true);
+    const [isJustLoaded, setIsJustLoaded] = useState<boolean>(true);
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
 
@@ -16,8 +16,8 @@ function NavBar() {
     }, [pathname])
 
     return (
-        <div>
-            <header aria-label="Site Header" className="bg-neutral dark:bg-gray-900">
+        <div className='text-white'>
+            <header aria-label="Site Header" className="bg-accent">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
 
@@ -35,14 +35,14 @@ function NavBar() {
                             <nav aria-label="Site Nav">
                                 <ul className="flex items-center gap-6 text-sm menu menu-horizontal">
                                     <li>
-                                        <Link to='/about' className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75">
-                                            About
+                                        <Link to='/' className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75">
+                                            Main
                                         </Link>
                                     </li>
                                     <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75">
-                                            Careers
-                                        </a>
+                                        <Link to='/byclass' className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75">
+                                            Search By Class
+                                        </Link>
                                     </li>
                                     {/* <li tabIndex={0}>
                                         <a>
@@ -68,20 +68,11 @@ function NavBar() {
                             </nav>
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="sm:flex sm:gap-4">
-                                <a className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-teal-500" href="/">
-                                    Login
-                                </a>
-                                <div className="hidden sm:flex">
-                                    <a className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 dark:bg-gray-800 dark:text-white dark:hover:text-white/75" href="/">
-                                        Register
-                                    </a>
-                                </div>
-                            </div>
+
                             <div className="block md:hidden">
                                 <button onClick={() => {
                                     setIsDrawerOpen(prev => !prev);
-                                    setIsFirstLoaded(false);
+                                    setIsJustLoaded(false);
                                 }} className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -95,16 +86,16 @@ function NavBar() {
 
             {/* mobile drawer */}
             <div onClick={() => { setIsDrawerOpen(false); }} className={`min-h-screen min-w-full mt-10 bg-black/50 fixed top-6 left-0 md:hidden ${!isDrawerOpen && 'hidden'}`} />
-            <div onClick={(e) => e.stopPropagation()} className={`min-h-screen fixed right-0 menu bg-base-100 md:hidden
+            <div onClick={(e) => e.stopPropagation()} className={`min-h-screen fixed right-0 menu bg-accent md:hidden whitespace-nowrap
             ${!isDrawerOpen ?
-                    `w-0 ${!isFirstLoaded && 'animate-close-drawer'}`
+                    `w-0 ${!isJustLoaded && 'animate-close-drawer'}`
                     :
                     'w-56 animate-open-drawer'}`}>
                 <ul className={`mt-5`}>
                     <li><Link to='/'>Main</Link></li>
-                    <li><Link to='/about'>About</Link></li>
-
-                    <li className='transition'><Link to=''>Asd</Link></li>
+                    <li><Link to='/byclass'>Search By Class</Link></li>
+                    <li><Link to='/byclass'>Search By Class</Link></li>
+                    <li><Link to='/byclass'>Search By Class</Link></li>
                 </ul>
             </div>
 

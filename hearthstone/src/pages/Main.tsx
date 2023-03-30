@@ -2,7 +2,11 @@ import React from 'react'
 
 function Main() {
   return (
-    <div>Main</div>
+    <div>
+      <div className='text-5xl text-center m-10'>Hearthstone API</div>
+
+
+    </div>
   )
 }
 

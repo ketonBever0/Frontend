@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './ui/NavBar'
 import Main from './pages/Main'
 import { CardProvider } from './context/CardContext'
+import ByClass from './pages/search/byClass/ByClass'
 
 
 function App() {
 
   return (
-    <div className='min-h-screen' data-theme="hsTheme">
+    <div className='min-h-screen bg-neutral' data-theme="hsTheme">
 
       <CardProvider>
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path='*' element={<Main />} />
             <Route path='/' element={<Main />} />
+            <Route path='/byclass' element={<ByClass />} />
           </Routes>
         </Router>
 

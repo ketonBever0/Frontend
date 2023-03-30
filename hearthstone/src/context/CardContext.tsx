@@ -14,7 +14,7 @@ export const CardProvider = ({ children }: any) => {
 
 
 
-    const headers: Object = {
+    const headers: any = {
         'X-RapidAPI-Key': api_key,
         'X-RapidAPI-Host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
     }
@@ -36,9 +36,9 @@ export const CardProvider = ({ children }: any) => {
     })
 
 
-    const getInfo = () => {
+    const getInfo = async () => {
         setIsloading(true);
-        fetch('https://omgvamp-hearthstone-v1.p.rapidapi.com/info', headers)
+        await fetch('https://omgvamp-hearthstone-v1.p.rapidapi.com/info', { headers: headers })
             .then(res => res.json())
             .then(data => setInfo(data))
             .catch(err => console.log(err))
@@ -46,12 +46,12 @@ export const CardProvider = ({ children }: any) => {
     }
 
 
-    const [cards, setCards] = useState<Array<any>>([]);
+    const [cards, setCards] = useState<Array<any> | Object>([]);
 
 
-    const getCards = (url: string) => {
+    const getCards = async (url: string) => {
         setIsloading(true);
-        fetch('https://omgvamp-hearthstone-v1.p.rapidapi.com/info', headers)
+        await fetch(url, { headers: headers })
             .then(res => res.json())
             .then(data => setCards(data))
             .catch(err => console.log(err))
@@ -63,7 +63,9 @@ export const CardProvider = ({ children }: any) => {
     return <CardContext.Provider value={{
         isLoading,
         info,
-        cards
+        cards,
+        getInfo,
+        getCards
     }}>{children}</CardContext.Provider>
 
 
