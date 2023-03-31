@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 import hsLogo from '../assets/hs_logo.png';
+import CardContext from '../context/CardContext';
+import Modal from 'react-modal';
 
 function NavBar() {
 
@@ -10,10 +13,25 @@ function NavBar() {
     const [isJustLoaded, setIsJustLoaded] = useState<boolean>(true);
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
+    const {
+        info,
+        setCards,
+        getInfo,
+        isInfoAvailable
+    } = useContext(CardContext);
 
     useEffect(() => {
         setIsDrawerOpen(false);
+        setCards([]);
     }, [pathname])
+
+    useEffect(() => {
+        getInfo();
+        setIsModalOpen(false);
+    }, [])
+
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
 
     return (
         <div className='text-white'>
@@ -55,20 +73,31 @@ function NavBar() {
                                         </ul>
                                     </li> */}
                                     <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75" href="/">
-                                            Projects
-                                        </a>
+                                        <Link to={'/byset'} className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75">
+                                            Search By Set
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75" href="/">
-                                            Blog
-                                        </a>
+                                        <Link to={'/byquality'} className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75">
+                                            Search By Quality
+                                        </Link>
                                     </li>
                                 </ul>
+
                             </nav>
                         </div>
                         <div className="flex items-center gap-4">
-
+                            <div className="sm:flex sm:gap-4">
+                                {isInfoAvailable &&
+                                    <button onClick={() => {
+                                        setIsDrawerOpen(false);
+                                        setIsModalOpen(true);
+                                    }}
+                                        className="block rounded-md bg-base-100 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700">
+                                        <AiOutlineInfoCircle size={"1.4rem"} />
+                                    </button>
+                                }
+                            </div>
                             <div className="block md:hidden">
                                 <button onClick={() => {
                                     setIsDrawerOpen(prev => !prev);
@@ -85,8 +114,8 @@ function NavBar() {
             </header>
 
             {/* mobile drawer */}
-            <div onClick={() => { setIsDrawerOpen(false); }} className={`min-h-screen min-w-full mt-10 bg-black/50 fixed top-6 left-0 md:hidden ${!isDrawerOpen && 'hidden'}`} />
-            <div onClick={(e) => e.stopPropagation()} className={`min-h-screen fixed right-0 menu bg-accent md:hidden whitespace-nowrap
+            <div onClick={() => { setIsDrawerOpen(false); }} className={`min-h-screen min-w-full mt-10 bg-black/50 fixed top-6 left-0 md:hidden z-10 ${!isDrawerOpen && 'hidden'}`} />
+            <div onClick={(e) => e.stopPropagation()} className={`min-h-screen fixed right-0 menu bg-accent md:hidden whitespace-nowrap z-10
             ${!isDrawerOpen ?
                     `w-0 ${!isJustLoaded && 'animate-close-drawer'}`
                     :
@@ -94,12 +123,71 @@ function NavBar() {
                 <ul className={`mt-5`}>
                     <li><Link to='/'>Main</Link></li>
                     <li><Link to='/byclass'>Search By Class</Link></li>
-                    <li><Link to='/byclass'>Search By Class</Link></li>
-                    <li><Link to='/byclass'>Search By Class</Link></li>
+                    <li><Link to='/byset'>Search By Set</Link></li>
+                    <li><Link to='/byquality'>Search By Quality</Link></li>
                 </ul>
             </div>
 
-        </div>
+
+            <Modal
+                isOpen={isModalOpen}
+                contentLabel="Info"
+                onRequestClose={() => setIsModalOpen(false)}
+                style={{
+                    overlay: {
+                        backgroundColor: "rgb(0 0 0 / 0.5)"
+                    },
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        bottom: 'auto',
+                        marginRight: '-50%',
+                        transform: 'translate(-50%, -50%)',
+                        backgroundColor: "#C3A492",
+                        border: "0.3rem solid #693D2D",
+                        maxHeight: "40rem"
+                    }
+                }}
+                shouldCloseOnOverlayClick={true}
+            >
+                <div>
+                    <div className='grid md:grid-cols-3 xs:grid-cols-1 gap-4'>
+                        <div>
+                            <h3 className='text-3xl mb-4'>Classes</h3>
+                            {
+                                isInfoAvailable && info.classes.length > 0 && info.classes.map((classElement: Array<String>, index: React.Key) => (
+                                    <li key={index}>{classElement}</li>
+                                ))
+                            }
+                        </div>
+
+                        <div>
+                            <h3 className='text-3xl mb-4'>Sets</h3>
+                            {
+                                isInfoAvailable && info.sets.length > 0 && info.sets.map((set: Array<String>, index: React.Key) => (
+                                    <li key={index}>{set}</li>
+                                ))
+                            }
+                        </div>
+
+                        <div>
+                            <h3 className='text-3xl mb-4'>Qualities</h3>
+                            {
+                                isInfoAvailable && info.qualities.length > 0 && info.qualities.map((quality: Array<String>, index: React.Key) => (
+                                    <li key={index}>{quality}</li>
+                                ))
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+            </Modal>
+
+
+
+        </div >
     )
 }
 

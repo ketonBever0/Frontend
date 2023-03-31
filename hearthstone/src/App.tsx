@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './ui/NavBar'
 import Main from './pages/Main'
 import { CardProvider } from './context/CardContext'
-import ByClass from './pages/search/byClass/ByClass'
+import ByClass from './pages/search/ByClass'
+import BySet from './pages/search/BySet'
+import ByQuality from './pages/search/ByQuality'
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
             <Route path='*' element={<Main />} />
             <Route path='/' element={<Main />} />
             <Route path='/byclass' element={<ByClass />} />
+            <Route path='/byset' element={<BySet />} />
+            <Route path='/byquality' element={<ByQuality />} />
           </Routes>
         </Router>
 

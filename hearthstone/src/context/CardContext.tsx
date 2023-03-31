@@ -35,14 +35,17 @@ export const CardProvider = ({ children }: any) => {
         locales: Object
     })
 
+    const [isInfoAvailable, setIsInfoAvailable] = useState<boolean>(false);
 
     const getInfo = async () => {
-        setIsloading(true);
+        setIsInfoAvailable(false);
         await fetch('https://omgvamp-hearthstone-v1.p.rapidapi.com/info', { headers: headers })
             .then(res => res.json())
-            .then(data => setInfo(data))
+            .then(data => {
+                setInfo(data);
+                setIsInfoAvailable(true);
+            })
             .catch(err => console.log(err))
-            .finally(() => setIsloading(false));
     }
 
 
@@ -63,9 +66,10 @@ export const CardProvider = ({ children }: any) => {
     return <CardContext.Provider value={{
         isLoading,
         info,
-        cards,
+        cards, setCards,
         getInfo,
-        getCards
+        getCards,
+        isInfoAvailable
     }}>{children}</CardContext.Provider>
 
 
