@@ -23,7 +23,10 @@ export const TimetableProvider = ({ children }) => {
         if (form.from != "" && form.to != "") {
             setIsLoading(true);
             setTimetable(null);
-            await fetch(encodeURI(`https://apiv2.oroszi.net/elvira?from=${form.from}&to=${form.to}`))
+            await fetch(encodeURI(`https://apiv2.oroszi.net/elvira?from=${form.from}&to=${form.to}`), {
+                method: 'GET',
+                mode: 'no-cors',
+            })
                 .then(res => res.json())
                 .then(data => {
                     if (data.statusCode != 500) {
