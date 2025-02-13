@@ -1,0 +1,10 @@
+<div>
+  <!-- <div *ngIf="user"><h1>{{user.name.title}} {{user.name.first}} {{user.name.last}}</h1></div>
+  <ng-template #elseBlock>Nincs</ng-template> -->
+  @if (user) {
+    <h1>{{user.name.title}} {{user.name.first}} {{user.name.last}}</h1>
+  }
+  @else {
+    <p>Nincs</p>
+  }
+</div>
