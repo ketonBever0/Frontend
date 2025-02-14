@@ -1,10 +1,29 @@
-<div>
+<div class="flex flex-wrap justify-between gap-6">
   <!-- <div *ngIf="user"><h1>{{user.name.title}} {{user.name.first}} {{user.name.last}}</h1></div>
   <ng-template #elseBlock>Nincs</ng-template> -->
-  @if (user) {
-    <h1>{{user.name.title}} {{user.name.first}} {{user.name.last}}</h1>
-  }
-  @else {
-    <p>Nincs</p>
-  }
+  @if (userService.users()) { @for (user of userService.users(); track $index) {
+  <h1>{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</h1>
+  } }
+
+  <button
+    class="inline-block rounded-full border border-indigo-600 p-3 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:ring-3 focus:outline-hidden cursor-pointer"
+    (click)="addUser()"
+  >
+    <span class="sr-only"> Add </span>
+
+    <svg
+      class="size-5 rtl:rotate-180"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M14 5l7 7m0 0l-7 7m7-7H3"
+      />
+    </svg>
+  </button>
 </div>

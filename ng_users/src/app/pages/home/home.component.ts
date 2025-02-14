@@ -1,5 +1,6 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, Signal, signal } from '@angular/core';
 import axios, { AxiosResponse } from 'axios';
+import { UserService } from '../../providers/user/user.service';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +17,17 @@ import axios, { AxiosResponse } from 'axios';
   // `,
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(public userService: UserService) {}
 
-  user: any = null;
-
-  async ngOnInit() {
+  async addUser() {
     await axios.get('https://randomuser.me/api/').then((res: AxiosResponse) => {
-      if (res.status === 200) this.user = res.data.results[0];
+      if (res.status === 200) this.userService.users.update(prev => [...prev, res.data.results[0]]);
     });
+  }
+
+
+
+  ngOnInit() {
+    
   }
 }
