@@ -1,8 +1,32 @@
 <div class="flex flex-wrap justify-between gap-6">
-  <!-- <div *ngIf="user"><h1>{{user.name.title}} {{user.name.first}} {{user.name.last}}</h1></div>
-  <ng-template #elseBlock>Nincs</ng-template> -->
   @if (userService.users()) { @for (user of userService.users(); track $index) {
-  <h1>{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</h1>
+  <div class="group relative block bg-black">
+    <img
+      alt=""
+      [src]="user.picture.large"
+      class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+    />
+
+    <div class="relative p-4 sm:p-6 lg:p-8">
+      <p class="text-sm font-medium tracking-widest text-pink-500 uppercase">
+        {{ user.email }}
+      </p>
+
+      <p class="text-xl font-bold text-white sm:text-2xl">
+        {{ user.name.title }} {{ user.name.first }} {{ user.name.last }}
+      </p>
+
+      <div class="mt-32 sm:mt-48 lg:mt-64">
+        <div
+          class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+        >
+          <p class="text-sm text-white">
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
   } }
 
   <button

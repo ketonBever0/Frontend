@@ -6,15 +6,9 @@ import { UserService } from '../../providers/user/user.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  // template: `
-  //   <ng-template [ngIf]="user != null">
-  //     <div>
-  //       <h1>
-  //         {{ user.name.title }} {{ user.name.first }} {{ user.name.last }}
-  //       </h1>
-  //     </div>
-  //   </ng-template>
-  // `,
+  template: `
+
+  `,
 })
 export class HomeComponent implements OnInit {
   constructor(public userService: UserService) {}
@@ -28,6 +22,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.addUser();
   }
 }
